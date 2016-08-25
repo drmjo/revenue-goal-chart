@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chart</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+    <style media="screen">
+      .chart {
+        font-family: 'Open Sans', sans-serif;
+        background: #4d4d4d;
+        height: 150px;
+        width: 300px;
+        padding: 15px;
+      }
+      .chart svg {
+        height: 150px;
+        width: 300px;
+        position: relative;
+      }
+      .chat svg g.pie {
+        position: absolute;
+
+      }
+      .chart svg .percent text {
+        text-anchor: middle;
+        dominant-baseline: middle;
+        font-size: 35px;
+        fill: white;
+      }
+      .chart svg .rev-goal text {
+        fill: white;
+        font-size: 35px;
+      }
+      .chart svg .rev-goal .revenue {
+        transform: translate(0,50px);
+      }
+      .chart svg .rev-goal .revenue-label {
+        transform: translate(0,12px);
+        font-size: 12px;
+      }
+      .chart svg .rev-goal .goal-label {
+        transform: translate(0,105px);
+        font-size: 12px;
+      }
+      .chart svg .rev-goal .goal {
+        transform: translate(0,143px);
+      }
+      .chart svg .devider {
+        stroke: #00ccff;
+        stroke-width: 3px;
+      }
+      .chart .color-pie {
+        fill: #00ccff;
+      }
+      .chart .color-bg {
+        fill: #808080;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chart" data-info='{"revenue":472232.02,"goal":500000}'></div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="rev-goal-chart.js"></script>
+    <script type="text/javascript">
+      $('.chart').revGoalChart({
+        duration: 1000,
+      });
+    </script>
+  </body>
+</html>
