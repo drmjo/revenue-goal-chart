@@ -11,32 +11,32 @@
       duration: 1000,
 		};
 	//combining the default options with the user inputed options
-	options = $.extend({}, this.defaultOptions, options);
+	var options = $.extend({}, this.defaultOptions, options);
 
-  let revenue = this.data('info').revenue;
-  let goal = this.data('info').goal;
-  let percent = Math.round(revenue / goal * 100);
-  let formatMoney = d3.format('$,.2f');
-  let chart = d3.select(this.get(0))
+  var revenue = this.data('info').revenue;
+  var goal = this.data('info').goal;
+  var percent = Math.round(revenue / goal * 100);
+  var formatMoney = d3.format('$,.2f');
+  var chart = d3.select(this.get(0))
       .append('svg');
 
-  let arc = d3.svg.arc()
+  var arc = d3.svg.arc()
       .innerRadius(options.diameter / 2 * .9)
       .outerRadius(options.diameter / 2);
 
-  let bgArc = d3.svg.arc()
+  var bgArc = d3.svg.arc()
       .innerRadius(options.diameter / 2 * .9)
       .outerRadius(options.diameter / 2)
       .startAngle(0)
       .endAngle(2*Math.PI);
 
-  let pie = d3.layout.pie()
+  var pie = d3.layout.pie()
       .sort(null)
       .value(function(d) {
         return d;
       });
 
-  let classes = d3.scale.ordinal()
+  var classes = d3.scale.ordinal()
       .range([
           "color-pie",
           "color-bg",
@@ -47,10 +47,10 @@
       .attr('d', bgArc)
       .attr('class', 'color-bg');
 
-  let chart_g = chart.append('g')
+  var chart_g = chart.append('g')
       .attr('class', 'pie')
 
-  let rev_goal_g = chart.append('g')
+  var rev_goal_g = chart.append('g')
       .attr('class', 'rev-goal');
 
   chart.append('line')
@@ -95,7 +95,7 @@
       //     }
       // });
 
-  let percent_g = chart.selectAll('svg')
+  var percent_g = chart.selectAll('svg')
       .data([percent])
       .enter().append('g')
       .attr('class', 'percent')
@@ -108,7 +108,7 @@
       .tween('text', function(d){
           var i = d3.interpolate(0, d);
           return function(t){
-            let format = d3.format('.0f');
+            var format = d3.format('.0f');
             d3.select(this).text(format(i(t)) + '%');
           }
       });
